@@ -15,7 +15,7 @@ const Hero = () => {
             </style>
             `}
       </Head>
-      <section className="relative py-10 sm:py-16 lg:py-24">
+      <section className="relative py-10 sm:py-16 lg:py-24" id="home">
         <Image
           src="/hero-bg.png"
           alt=""

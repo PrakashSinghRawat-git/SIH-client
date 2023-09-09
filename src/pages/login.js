@@ -1,50 +1,52 @@
-import Login from '@/Components/Login';
-import { useRouter } from 'next/router';
-import React, { useEffect } from 'react'
-import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
-import { auth, db } from '@/db/firebase';
-import { doc, getDoc, setDoc } from "firebase/firestore";
-const LoginHome = () => {
+// import Login from '@/Components/Login';
+// import { useRouter } from 'next/router';
+// import React, { useEffect } from 'react'
+// import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
+// import { auth, db } from '@/db/firebase';
+// import { doc, getDoc, setDoc } from "firebase/firestore";
 
-  const router = useRouter()
+// const LoginHome = () => {
 
-  const handleLogin = async () => {
-      const provider = new GoogleAuthProvider();
-      try {
-        const result = await signInWithPopup(auth, provider);
-        const { displayName, photoURL, uid } = result.user;
-          
-        console.log(result.user)
-        // Store user's name and photo in Firestore
-        await setDoc(doc(db, "users", uid), {
-          displayName, photoURL, uid
-        })
+//   const router = useRouter()
 
-        router.push("/")
+//   const handleLogin = async () => {
+//     const provider = new GoogleAuthProvider();
+//     try {
+//       const result = await signInWithPopup(auth, provider);
+//       const { displayName, photoURL, uid } = result.user;
 
-      } catch (error) {
-        console.error('Error logging in:', error);
-      }
-    };
+//       console.log(result.user)
+//       // Store user's name and photo in Firestore
+//       await setDoc(doc(db, "users", uid), {
+//         displayName, photoURL, uid
+//       })
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        router.push("/");
-      }
-    });
+//       router.push("/")
 
-    return () => unsubscribe();
-  }, []);
+//     } catch (error) {
+//       console.error('Error logging in:', error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     const unsubscribe = auth.onAuthStateChanged((user) => {
+//       if (user) {
+//         router.push("/");
+//       }
+//     });
+
+//     return () => unsubscribe();
+//   }, []);
 
 
 
 
-  return (
-    <>
-     <Login handleLogin={handleLogin}/>
-    </>
-  )
-}
+//   return (
+//     <>
 
-export default LoginHome
+//       <Login handleLogin={handleLogin} />
+//     </>
+//   )
+// }
+
+// export default LoginHome
