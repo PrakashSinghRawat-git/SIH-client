@@ -8,7 +8,7 @@ import {
     DropdownMenuContent,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/Components/ui/dropdown-menu";
 
 const NavDropdown = () => {
     const [active, setActive] = React.useState("");
